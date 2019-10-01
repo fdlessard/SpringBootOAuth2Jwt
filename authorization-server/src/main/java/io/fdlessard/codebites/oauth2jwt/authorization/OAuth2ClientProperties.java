@@ -13,11 +13,10 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "security.oauth2.client")
 public class OAuth2ClientProperties {
 
-  private String clientId;
-  private String clientSecret;
-  private String scopes;
-  private String authorizedGrantTypes;
-  private int accessTokenValiditySeconds;
-  private int refreshTokenValiditySeconds;
-
+    private String clientId;
+    private String clientSecret;
+    private String[] scopes;
+    private String[] authorizedGrantTypes;
+    private int accessTokenValiditySeconds;
+    private int refreshTokenValiditySeconds;
 }
