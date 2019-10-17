@@ -1,11 +1,11 @@
 package io.fdlessard.codebites.oauth2jwt.authorization;
 
-import io.fdlessard.codebites.oauth2jwt.authorization.jwt.UserIdAccessTokenConverter;
 import io.fdlessard.codebites.oauth2jwt.authorization.jwt.UserIdAccessTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import java.util.Arrays;
 
@@ -64,10 +65,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     @Bean
-    public JwtAccessTokenConverter accessTokenConverter(UserIdAccessTokenConverter userIdAccessTokenConverter) {
+    public JwtAccessTokenConverter accessTokenConverter(JwtKeyStoreProperties jwtKeyStoreProperties) {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setAccessTokenConverter(userIdAccessTokenConverter);
-        converter.setSigningKey("123");
+
+        KeyStoreKeyFactory keyStoreKeyFactory =
+                new KeyStoreKeyFactory(new ClassPathResource(jwtKeyStoreProperties.getFile()), jwtKeyStoreProperties.getPassword().toCharArray());
+        converter.setKeyPair(keyStoreKeyFactory.getKeyPair(jwtKeyStoreProperties.getKey()));
         return converter;
     }
 

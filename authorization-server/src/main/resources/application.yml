@@ -5,6 +5,13 @@ logging:
   level.io.fdlessard.codebites.oauth2.authorization: DEBUG
   level.root: DEBUG
 
+
+jwtKeyStore:
+  file: mykey.jks
+  password: mypass
+  key: mykey
+#  key-pair-password: changeme
+
 security:
   oauth2:
     client:

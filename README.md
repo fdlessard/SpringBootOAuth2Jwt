@@ -26,3 +26,6 @@ http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a27
 ### Links
 
 - https://www.baeldung.com/spring-security-oauth-jwt
+- https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/
+- https://blog.monkey.codes/how-to-use-jwt-and-oauth-with-spring-boot/
+- https://blog.marcosbarbero.com/centralized-authorization-jwt-spring-boot2/

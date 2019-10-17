@@ -5,16 +5,6 @@ logging:
   level.io.fdlessard.codebites.oauth2.authorization: DEBUG
   level.root: DEBUG
 
-
-#security:
-#  oauth2:
-#    client:
-#      client-id: testClientId
-#      client-secret: testSecret
-#    resource:
-#      token-info-uri: http://localhost:8081/oauth/check_token
-
-
 security:
   oauth2:
     client:
@@ -22,20 +12,14 @@ security:
       client-secret: secret
     resource:
       token-info-uri: http://localhost:8081/oauth/check_token
-
-
-#spring:
-#  security:
-#    user:
-#      name: name-db
-#      password: password
-#    oauth2:
-#      client:
-#        client-id: client
-#        client-secret: secret
-#      scope: read
-#      grant-type: client_credentials
-#      access-token-uri: http://localhost:8081/oauth/token
-#      user-authorization-uri: http://localhost:8081/oauth/authorize
-#      resource:
-#        token-info-uri: http://localhost:8080
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhWluzjhZ5r15xvQ9EpCD
+          kI1hTFHvHI8H1D6/VyeU+b3aTqPsuK+dZWBivwIJIG5IyVYGCcdy5nWrL0PqG9zs
+          a8AMU0VCte5CzDlmhcu4xi/LUC77jLIWGkc/s5fOcGHNYAolP59UAx4lX1S6iWZF
+          mn0sXkmz0kDnJxTXUc1mASOGaY/snhTnDf8eVthcwVPNSR+wPT8GOpjHtaGv4L3X
+          CYh+Yz5UM907taulNCusNunXGjjh9N5Oi6lKSga/TOxlvyXxb84DOT2X6jITxZLB
+          d4+i3Fwtm55fLrlss0CWQpoWL7HFtCE8svp3XppLJxKgMIfkk8vJe8FrfFulb9F8
+          HQIDAQAB
+          -----END PUBLIC KEY-----
