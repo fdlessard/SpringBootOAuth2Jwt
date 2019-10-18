@@ -7,11 +7,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-    web.ignoring()
-        .antMatchers("/resources/**")
-        .antMatchers("/actuator/**")
-        .antMatchers("/h2-console/**");
-  }
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring()
+                .antMatchers("/resources/**")
+                .antMatchers("/actuator/**")
+                .antMatchers("/h2-console/**");
+    }
 }
