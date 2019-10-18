@@ -72,6 +72,35 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.31.0</version>
+                <configuration>
+                    <registry>registry.hub.docker.com</registry>
+                    <authConfig>
+                        <username></username>
+                        <password></password>
+                    </authConfig>
+                    <useColor>true</useColor>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>fdlessard/resource-server:latest</name>
+                            <build>
+                                <dockerFile>${project.basedir}/Dockerfile</dockerFile>
+                            </build>
+                            <run>
+                                <ports>
+                                    <port>8080:8080</port>
+                                </ports>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 

@@ -87,6 +87,34 @@
                     <addResources>true</addResources>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.31.0</version>
+                <configuration>
+                    <registry>registry.hub.docker.com</registry>
+                    <authConfig>
+                        <username></username>
+                        <password></password>
+                    </authConfig>
+                    <useColor>true</useColor>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>fdlessard/authorization:latest</name>
+                            <build>
+                                <dockerFile>${project.basedir}/Dockerfile</dockerFile>
+                            </build>
+                            <run>
+                                <ports>
+                                    <port>8081:8081</port>
+                                </ports>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
