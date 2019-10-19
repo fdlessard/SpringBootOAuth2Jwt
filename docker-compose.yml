@@ -1,20 +1,16 @@
-version: '2'
+version: '3.7'
 services:
   authorization-server:
     container_name: authorization-server-container
-    build: .
+    build: authorization-server/
     image: fdlessard/authorization-server-image:latest
     ports:
       - 8081:8081
-    environment:
-      - 'SPRING_PROFILES_ACTIVE=docker-compose'
   resource-server:
     container_name: resource-server-container
-    build: .
+    build: resource-server/
     image: fdlessard/resource-server-image:latest
     depends_on:
       - authorization-server
     ports:
       - 8080:8080
-    environment:
-      - 'SPRING_PROFILES_ACTIVE=docker-compose'
