@@ -28,6 +28,42 @@ spring:
       enabled: always
   jackson:
     default-property-inclusion: non_null
+
+
+---
+# Development profile
+
+spring:
+  profiles: development
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:db;MODE=PostgreSQL
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
+
+---
+# Integration test profile
+
+spring:
+  profiles: integration
   h2:
     console:
       enabled: true

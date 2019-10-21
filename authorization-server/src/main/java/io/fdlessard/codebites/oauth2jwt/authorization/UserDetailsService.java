@@ -1,9 +1,9 @@
 package io.fdlessard.codebites.oauth2jwt.authorization;
 
 
-import java.util.Optional;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -15,7 +15,7 @@ public class UserDetailsService implements org.springframework.security.core.use
   }
 
   @Override
-  public UserDetails loadUserByUsername(String username) {
+  public User loadUserByUsername(String username) {
     Optional<User> optionalUser = userRepository.findByUsername(username);
     return optionalUser.orElseThrow(() -> new NotFoundException("Couldn't find a User with username: " + username));
   }
