@@ -34,4 +34,6 @@ http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a27
 
 ### Docker 
 
+- https://www.baeldung.com/docker-compose
+
 $ docker-compose up 
