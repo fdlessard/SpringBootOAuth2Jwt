@@ -183,7 +183,7 @@
                                 </ports>
                                 <wait>
                                     <!-- Check for this URL to return a 200 return code .... -->
-                                    <url>http://localhost:8081/health</url>
+                                    <url>localhost:8081/actuator/health</url>
                                     <time>120000</time>
                                 </wait>
                             </run>

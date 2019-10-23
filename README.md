@@ -35,5 +35,5 @@ http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a27
 ### Docker 
 
 - https://www.baeldung.com/docker-compose
-
+- https://medium.com/@fndomoraes/running-docker-containers-on-maven-integration-tests-ee071bcd743f
 $ docker-compose up 
