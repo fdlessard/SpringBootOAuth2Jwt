@@ -30,10 +30,10 @@ spring:
     default-property-inclusion: non_null
   h2:
     console:
-      enabled: true
+      enabled: on
       path: /h2-console
       settings:
-        trace: true
+        trace: on
   datasource:
     platform: h2
     url: jdbc:h2:mem:db;MODE=PostgreSQL
@@ -59,10 +59,10 @@ spring:
   profiles: development
   h2:
     console:
-      enabled: true
+      enabled: on
       path: /h2-console
       settings:
-        trace: true
+        trace: on
   datasource:
     platform: h2
     url: jdbc:h2:mem:testdb;MODE=PostgreSQL
@@ -88,10 +88,10 @@ spring:
   profiles: integration
   h2:
     console:
-      enabled: true
+      enabled: on
       path: /h2-console
       settings:
-        trace: true
+        trace: on
   datasource:
     platform: h2
     url: jdbc:h2:mem:db;MODE=PostgreSQL

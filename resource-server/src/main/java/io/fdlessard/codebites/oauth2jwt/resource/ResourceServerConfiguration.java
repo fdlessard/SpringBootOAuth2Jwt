@@ -23,7 +23,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Autowired
     private UserIdAccessTokenConverter userIdAccessTokenConverter;
-/*
+
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
@@ -51,5 +51,5 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         defaultTokenServices.setSupportRefreshToken(true);
         return defaultTokenServices;
     }
-*/
+
 }

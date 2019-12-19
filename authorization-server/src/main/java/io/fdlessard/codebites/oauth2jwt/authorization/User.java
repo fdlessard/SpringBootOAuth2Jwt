@@ -28,12 +28,12 @@ public class User implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @JsonIgnore
     @Version
     @Column(name = "version")
-    private long version;
+    private int version;
 
     @NotNull
     @Column(name = "username", unique = true, nullable = false, length = 255)
