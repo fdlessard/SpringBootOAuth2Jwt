@@ -140,12 +140,10 @@
             </plugin>
 
             <plugin>
-
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.31.0</version>
-
-                <executions>
+<!--                <executions>
                     <execution>
                         <id>start</id>
                         <phase>pre-integration-test</phase>
@@ -161,7 +159,7 @@
                             <goal>stop</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
 
                 <configuration>
                     <registry>registry.hub.docker.com</registry>
@@ -173,7 +171,7 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
-                            <name>fdlessard/authorization:latest</name>
+                            <name>fdlessard/authorization-server:latest</name>
                             <build>
                                 <dockerFile>${project.basedir}/Dockerfile</dockerFile>
                             </build>
@@ -181,18 +179,17 @@
                                 <ports>
                                     <port>8081:8081</port>
                                 </ports>
-                                <wait>
-                                    <!-- Check for this URL to return a 200 return code .... -->
+<!--                                <wait>
+                                    &lt;!&ndash; Check for this URL to return a 200 return code .... &ndash;&gt;
                                     <url>localhost:8081/actuator/health</url>
                                     <time>120000</time>
-                                </wait>
+                                </wait>-->
                             </run>
                         </image>
                     </images>
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
 
 </project>
