@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class UserDetailsServiceIt {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserService userService;
 
     @Test
     void loadUserByUsername() {
-        User user = userDetailsService.loadUserByUsername(TEST_USERNAME);
+        User user = userService.loadUserByUsername(TEST_USERNAME);
         assertNotNull(user);
         assertEquals(0, user.getId());
     }
