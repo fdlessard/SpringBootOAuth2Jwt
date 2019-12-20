@@ -1,4 +1,4 @@
-package io.fdlessard.codebites.oauth2jwt.authorization;
+package io.fdlessard.codebites.oauth2jwt.authorization.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/actuator/**")
         .antMatchers("/h2-console/**");
   }
-
 
   @Bean
   @Override

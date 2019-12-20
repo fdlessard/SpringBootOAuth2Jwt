@@ -1,5 +1,8 @@
-package io.fdlessard.codebites.oauth2jwt.authorization;
+package io.fdlessard.codebites.oauth2jwt.authorization.configurations;
 
+import io.fdlessard.codebites.oauth2jwt.authorization.JwtKeyStoreProperties;
+import io.fdlessard.codebites.oauth2jwt.authorization.OAuth2ClientProperties;
+import io.fdlessard.codebites.oauth2jwt.authorization.UserService;
 import io.fdlessard.codebites.oauth2jwt.authorization.jwt.UserIdAccessTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

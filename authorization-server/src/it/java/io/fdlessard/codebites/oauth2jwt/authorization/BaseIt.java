@@ -1,6 +1,6 @@
 package io.fdlessard.codebites.oauth2jwt.authorization;
 
-
+import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_ACCESS_TOKEN;
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_CLIENT_ID;
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_CLIENT_SECRET;
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_GRANT_TYPE_STR;
@@ -9,31 +9,22 @@ import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_SCOPE_STR;
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_USERNAME;
 import static io.fdlessard.codebites.oauth2jwt.authorization.TestConstants.TEST_USERNAME_STR;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.common.util.JacksonJsonParser;
 import org.springframework.security.web.FilterChainProxy;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 
-@ActiveProfiles("integration")
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-class OAuth2ControllerIt {
+public abstract class BaseIt {
 
   @Autowired
   protected WebApplicationContext wac;
@@ -43,11 +34,9 @@ class OAuth2ControllerIt {
 
   protected MockMvc mockMvc;
 
-  @Test
-  void obtainAccessToken() throws Exception {
+  protected String accessToken;
 
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
-        .addFilter(springSecurityFilterChain).build();
+  protected String obtainAccessToken(String username, String password) throws Exception {
 
     MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
     params.add(TEST_GRANT_TYPE_STR, TEST_PASSWORD_STR);
@@ -58,12 +47,16 @@ class OAuth2ControllerIt {
     ResultActions result
         = mockMvc.perform(post("/oauth/token")
         .params(params)
+        .params(params)
         .with(httpBasic(TEST_CLIENT_ID, TEST_CLIENT_SECRET))
         .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(content().contentType("application/json;charset=UTF-8"));
 
     String resultString = result.andReturn().getResponse().getContentAsString();
-    assertNotNull(resultString);
+
+    JacksonJsonParser jsonParser = new JacksonJsonParser();
+
+    return jsonParser.parseMap(resultString).get(TEST_ACCESS_TOKEN).toString();
   }
 }
