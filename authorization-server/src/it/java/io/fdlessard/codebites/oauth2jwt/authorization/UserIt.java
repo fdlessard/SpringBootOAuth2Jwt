@@ -41,7 +41,7 @@ public class UserIt {
     @Test
     void getUsers() throws Exception {
 
-        mockMvc.perform(get("/users")
+        mockMvc.perform(get("/users").secure( true )
                 .with(httpBasic(TEST_USERNAME, TEST_PASSWORD_STR)))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().contentType(MEDIA_TYPE_APPLICATION_HAL_JSON))
@@ -53,7 +53,7 @@ public class UserIt {
     @Test
     void getUser() throws Exception {
 
-        mockMvc.perform(get("/users/0")
+        mockMvc.perform(get("/users/0").secure( true )
                 .with(httpBasic(TEST_USERNAME, TEST_PASSWORD_STR)))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(status().is2xxSuccessful())

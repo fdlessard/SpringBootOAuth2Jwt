@@ -9,7 +9,7 @@
 
 ### Authorization end point
 
-POST http://localhost:8081/oauth/token
+POST https://localhost:8442/oauth/token
 
 
 ![postman-2](postman-2.png)
@@ -24,7 +24,7 @@ POST http://localhost:8081/oauth/token
 - https://www.browserling.com/tools/bcrypt
 
 
-http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a2741
+- http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a2741
 
 
 ### Links
@@ -35,13 +35,29 @@ http://localhost:8081/oauth/check_token?token=b5bad5a8-2df3-441a-8c4f-73ba237a27
 - https://blog.marcosbarbero.com/centralized-authorization-jwt-spring-boot2/
 
 
-
 ### Docker 
 
 - https://www.baeldung.com/docker-compose
 - https://medium.com/@fndomoraes/running-docker-containers-on-maven-integration-tests-ee071bcd743f
-
-
 - https://dzone.com/articles/advanced-functional-testing-in-spring-boot-by-usin
 
 $ docker-compose up 
+
+
+###Certificate
+
+####Articles
+
+ - https://www.baeldung.com/spring-boot-https-self-signed-certificate
+ - https://www.baeldung.com/spring-security-oauth-jwt
+
+####Keys (PKCS12)
+
+ keytool -genkeypair -alias my-key -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore my-keystore.pfx -validity 3650
+
+ my-keystore-password
+
+
+####Public Key
+
+  keytool -list -rfc --keystore my-keystore.pfx | C:\openssl-1.1\x64\bin\openssl x509 -inform pem -pubkey

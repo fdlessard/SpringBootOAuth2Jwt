@@ -1,5 +1,10 @@
 server:
-  port: 8081
+  port: 8442
+  ssl:
+    key-store: classpath:fdlessard-keystore.pfx
+    key-store-password: fdlessard-password
+    key-store-type: PKCS12
+    key-alias: fdlessard-key
 
 logging:
   level.io.fdlessard.codebites.oauth2.authorization: DEBUG
@@ -7,10 +12,9 @@ logging:
 
 
 jwtKeyStore:
-  file: mykey.jks
-  password: mypass
-  key: mykey
-#  key-pair-password: changeme
+  file: fdlessard-keystore.pfx
+  password: fdlessard-password
+  key: fdlessard-key
 
 security:
   oauth2:
